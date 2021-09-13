@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchPokemon } from './utils';
 import { Pokemon } from './types';
+import styled from 'styled-components';
 
 import InfoContainer from './components/InfoContainer';
 
@@ -14,10 +15,19 @@ const App = () => {
   }, []);
 
   return (
-    <div className='appRoot'>
+    <StyledAppRoot>
       <InfoContainer pokemon={pokemon} />
-    </div>
+    </StyledAppRoot>
   );
 };
 
 export default App;
+
+const StyledAppRoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #123456;
+`;
