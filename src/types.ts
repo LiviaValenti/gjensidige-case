@@ -30,6 +30,12 @@ interface OtherSprites {
   'official-artwork': SimpleSprite;
 }
 
+export interface Stat {
+  base_stat: number;
+  effort: number;
+  stat: NameUrlPair;
+}
+
 interface TypeOfPokemon {
   type: NameUrlPair;
 }
@@ -45,6 +51,7 @@ export interface Pokemon {
   name: string;
   species: NameUrlPair;
   sprites: Sprites;
+  stats: Stat[];
   types: TypeOfPokemon[];
   weight: number;
 }

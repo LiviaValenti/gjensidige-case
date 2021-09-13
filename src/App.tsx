@@ -5,8 +5,6 @@ import styled from 'styled-components';
 
 import InfoContainer from './components/InfoContainer';
 
-import './app.css';
-
 const App = () => {
   const [pokemon, setPokemon] = useState<Pokemon>();
 
