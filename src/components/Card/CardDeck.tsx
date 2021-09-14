@@ -13,7 +13,7 @@ const CardDeck = ({
   favoritePokemon,
   setFavoritePokemon,
 }: FavoritePokemonProps) => {
-  const [pokemonNumber, setPokemonNumber] = useState<number>(149);
+  const [pokemonNumber, setPokemonNumber] = useState<number>(1);
   const [currentPokemon, setPokemon] = useState<Pokemon>();
   const [previousPokemon, setPreviousPokemon] = useState<Pokemon>();
   const [nextPokemon, setNextPokemon] = useState<Pokemon>();

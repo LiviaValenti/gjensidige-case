@@ -37,10 +37,6 @@ const App = () => {
 export default App;
 
 const StyledAppRoot = styled.div`
-  body {
-    padding: 0;
-    margin: 0;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;

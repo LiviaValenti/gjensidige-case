@@ -42,7 +42,7 @@ const ProgressBody = styled.span`
   filter: drop-shadow(1px 0px 4px #14141486);
 `;
 
-const Progress = styled.span<({progress: number})>`
+const Progress = styled.span<{ progress: number }>`
   display: block;
   border-radius: 10px;
   height: 100%;

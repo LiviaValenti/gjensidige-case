@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface CardHeaderProps {
   image: string;
@@ -9,10 +9,7 @@ interface CardHeaderProps {
 const CardHeader = ({ image, name, gradientBackground }: CardHeaderProps) => {
   return (
     <CardHeaderWrapper gradientBackground={gradientBackground}>
-      <PokemonImage
-        src={image}
-        alt={`${name} illustration`}
-      />
+      <PokemonImage src={image} alt={`${name} illustration`} />
       <h1>{name}</h1>
     </CardHeaderWrapper>
   );

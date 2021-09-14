@@ -147,7 +147,7 @@ const StyledCardWrapper = styled.div<CardBodyProps>`
     transform: scale(1.1)
       rotate3d(1, 2, 2, ${(props) => props.isActiveCard && 20}deg);
     cursor: pointer;
-    ${ClickOverlay}{
+    ${ClickOverlay} {
       filter: opacity(0.8);
     }
     &::before,
