@@ -1,7 +1,12 @@
 import { Pokemon } from './types';
 
-export const fetchPokemon = async (pokemonNumber: number) =>
-  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`).then<Pokemon>(
+/**
+ * Returns a Pokémon based on name or number from https://pokeapi.co/
+ * @param pokemonId name or number
+ * @returns Pokémon
+ */
+export const fetchPokemon = async (pokemonId: string | number) =>
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).then<Pokemon>(
     (res) => {
       const expectedResponseCode = 200;
       if (res.status === expectedResponseCode) {
@@ -13,6 +18,11 @@ export const fetchPokemon = async (pokemonNumber: number) =>
     }
   );
 
+  /**
+   * Returns gradient-values based on Pokémon-type
+   * @param type string depicting Pokémon-type
+   * @returns gradient values on format (gradient-angle, hex1 colorstop1, hex1 colorstop2)
+   */
 export const getGradientForType = (type: string) => {
   let rotation: number = 230;
   let sizeLeft: number = 20;
