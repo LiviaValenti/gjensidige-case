@@ -1,20 +1,35 @@
-import { useEffect, useState } from 'react';
-import { fetchPokemon } from './utils';
+import { useState } from 'react';
 import { Pokemon } from './types';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import FavoritePokemon from './components/Favorite/FavoritePokemon';
+import CardDeck from './components/Card/CardDeck';
 
-import InfoContainer from './components/InfoContainer';
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+`;
 
 const App = () => {
-  const [pokemon, setPokemon] = useState<Pokemon>();
-
-  useEffect(() => {
-    fetchPokemon('bulbasaur').then((res) => setPokemon(res));
-  }, []);
+  const [favoritePokemon, setFavoritePokemon] = useState<Pokemon[]>([]);
 
   return (
     <StyledAppRoot>
-      <InfoContainer pokemon={pokemon} />
+      <GlobalStyle />
+      <h1>
+        Pokemon! Gotta <i>fetch</i> them all
+      </h1>
+      <h2>Choose 3 favorites by clicking on the cards</h2>
+      <CardDeck
+        favoritePokemon={favoritePokemon}
+        setFavoritePokemon={setFavoritePokemon}
+      />
+      <FavoritePokemon
+        setFavoritePokemon={setFavoritePokemon}
+        favoritePokemon={favoritePokemon}
+      />
     </StyledAppRoot>
   );
 };
@@ -22,10 +37,24 @@ const App = () => {
 export default App;
 
 const StyledAppRoot = styled.div`
+  body {
+    padding: 0;
+    margin: 0;
+  }
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #123456;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(110deg, #123456 20%, #134e8a 40%, #123456 80%);
+  color: white;
+  & > h1 {
+    font-size: 2em;
+    margin: 20px 0 0 0;
+  }
+  & > h2 {
+    margin: 0 0 35px 0;
+    font-size: 1.3em;
+    font-weight: 400;
+  }
 `;
