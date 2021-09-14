@@ -1,3 +1,4 @@
+import {Fragment} from 'react';
 import styled from 'styled-components';
 import { Stat } from '../../types';
 import Meter from './Meter';
@@ -32,17 +33,17 @@ function shortenStatName(statName: string) {
 const Stats = ({ stats }: { stats: Stat[] }) => {
   if (stats) {
     const statList = stats.map((stat) => (
-      <>
+      <Fragment key={stat.stat.name}>
         <p>{shortenStatName(stat.stat.name)}</p>
         <StyledMeter
           value={stat.base_stat}
           max={getTopStatValue(stat.stat.name)}
         />
-      </>
+      </Fragment>
     ));
     return <StatsWrapper>{statList}</StatsWrapper>;
   }
-  return null;
+  return <p>Loading stats...</p>;
 };
 export default Stats;
 
@@ -55,6 +56,7 @@ const StatsWrapper = styled.div`
     margin: 5px;
     text-align: right;
     align-self: center;
+    font-weight: 500;
   }
 `;
 
