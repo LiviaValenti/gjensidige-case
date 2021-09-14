@@ -13,16 +13,17 @@ const CardDeck = ({
   favoritePokemon,
   setFavoritePokemon,
 }: FavoritePokemonProps) => {
-  const [pokemonNumber, setPokemonNumber] = useState<number>(1);
-  const [currentPokemon, setPokemon] = useState<Pokemon>();
+  const [currentPokemonNumber, setPokemonNumber] = useState<number>(1);
+  const [currentPokemon, setCurrentPokemon] = useState<Pokemon>();
   const [previousPokemon, setPreviousPokemon] = useState<Pokemon>();
   const [nextPokemon, setNextPokemon] = useState<Pokemon>();
 
   useEffect(() => {
-    fetchPokemon(pokemonNumber).then((res) => setPreviousPokemon(res));
-    fetchPokemon(pokemonNumber + 1).then((res) => setPokemon(res));
-    fetchPokemon(pokemonNumber + 2).then((res) => setNextPokemon(res));
-  }, [pokemonNumber]);
+    currentPokemonNumber > 1 && fetchPokemon(currentPokemonNumber - 1).then((res) => setPreviousPokemon(res));
+    fetchPokemon(currentPokemonNumber).then((res) => setCurrentPokemon(res));
+    currentPokemonNumber < 150 &&fetchPokemon(currentPokemonNumber + 1).then((res) => setNextPokemon(res));
+  }, [currentPokemonNumber]);
+
   const addToFavoritePokemon = (pokemon: Pokemon) => {
     // Add if max 3 not reached and pokemon does not exist in favorites already
     if (
@@ -35,31 +36,31 @@ const CardDeck = ({
 
   return (
     <CardsWrapper>
-      {pokemonNumber === 1 ? (
+      {currentPokemonNumber === 1 ? (
         <>
           <Card
             rotation={0}
             isActiveCard
-            pokemon={previousPokemon}
+            pokemon={currentPokemon}
             hoverIcon={'/images/plus-circle-fill.svg'}
             onClick={() => {
-              previousPokemon && addToFavoritePokemon(previousPokemon);
+              currentPokemon && addToFavoritePokemon(currentPokemon);
             }}
           />
           <Card
             rotation={20}
-            pokemon={currentPokemon}
+            pokemon={nextPokemon}
             hoverIcon={'/images/right-arrow.svg'}
             onClick={() => {
               setPokemonNumber((prev) => prev + 1);
             }}
           />
         </>
-      ) : pokemonNumber === 150 ? (
+      ) : currentPokemonNumber === 150 ? (
         <>
           <Card
             rotation={20}
-            pokemon={currentPokemon}
+            pokemon={previousPokemon}
             hoverIcon={'/images/left-arrow.svg'}
             onClick={() => {
               setPokemonNumber((prev) => prev - 1);
@@ -68,10 +69,10 @@ const CardDeck = ({
           <Card
             rotation={0}
             isActiveCard
-            pokemon={nextPokemon}
+            pokemon={currentPokemon}
             hoverIcon={'/images/plus-circle-fill.svg'}
             onClick={() => {
-              nextPokemon && addToFavoritePokemon(nextPokemon);
+              currentPokemon && addToFavoritePokemon(currentPokemon);
             }}
           />
         </>
@@ -82,7 +83,8 @@ const CardDeck = ({
             pokemon={previousPokemon}
             hoverIcon={'/images/left-arrow.svg'}
             onClick={() => {
-              pokemonNumber !== 1 && setPokemonNumber((prev) => prev - 1);
+              currentPokemonNumber !== 1 &&
+                setPokemonNumber((prev) => prev - 1);
             }}
           />
           <Card
@@ -98,7 +100,8 @@ const CardDeck = ({
             pokemon={nextPokemon}
             hoverIcon={'/images/right-arrow.svg'}
             onClick={() => {
-              pokemonNumber < 151 && setPokemonNumber((prev) => prev + 1);
+              currentPokemonNumber < 151 &&
+                setPokemonNumber((prev) => prev + 1);
             }}
           />
         </>
