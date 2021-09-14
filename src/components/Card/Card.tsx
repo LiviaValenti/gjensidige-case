@@ -1,6 +1,7 @@
 import { Pokemon } from '../../types';
 import StatList from '../Stats/StatList';
 import styled from 'styled-components';
+import WearFilter from './wear.png';
 import { getGradientForType } from '../../utils';
 import CardHeader from './CardHeader';
 import TypeTag from './TypeTag';
@@ -22,7 +23,7 @@ const Card = ({ pokemon }: CardProps) => {
           gradientBackground={gradientValueForType}
         />
         <Types>{typeList}</Types>
-
+        <WearOverlay wearImage={WearFilter} />
         <StatList stats={pokemon.stats} />
       </StyledCardWrapper>
     );
@@ -41,6 +42,16 @@ const Types = styled.div`
     }
 `
 
+const WearOverlay = styled.div<{ wearImage: string }>`
+  mix-blend-mode: multiply;
+  filter: opacity(0.8);
+  height: 525px;
+  width: 330px;
+  position: absolute;
+  background-image: url(${(props) => props.wearImage});
+  background-size: 330px 525px;
+`;
+
 const StyledCardWrapper = styled.div`
   position: relative;
   display: flex;
@@ -53,7 +64,6 @@ const StyledCardWrapper = styled.div`
   height: 525px;
   width: 330px;
   border-radius: 25px;
-  font-family: 'Poppins', sans-serif;
   // Shine-effect
   transition: 0.3s;
   &::before {
