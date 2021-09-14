@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Pokemon } from '../../types';
 import { fetchPokemon } from '../../utils';
@@ -6,7 +6,7 @@ import Card from '../Card/Card';
 
 interface FavoritePokemonProps {
   favoritePokemon: Pokemon[];
-  setFavoritePokemon: React.Dispatch<React.SetStateAction<Pokemon[]>>;
+  setFavoritePokemon: Dispatch<SetStateAction<Pokemon[]>>;
 }
 
 const CardDeck = ({
