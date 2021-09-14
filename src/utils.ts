@@ -18,11 +18,11 @@ export const fetchPokemon = async (pokemonId: string | number) =>
     }
   );
 
-  /**
-   * Returns gradient-values based on Pokémon-type
-   * @param type string depicting Pokémon-type
-   * @returns gradient values on format (gradient-angle, hex1 colorstop1, hex1 colorstop2)
-   */
+/**
+ * Returns gradient-values based on Pokémon-type
+ * @param type string depicting Pokémon-type
+ * @returns gradient values on format (gradient-angle, hex1 colorstop1, hex1 colorstop2)
+ */
 export const getGradientForType = (type: string) => {
   let rotation: number = 230;
   let sizeLeft: number = 20;
