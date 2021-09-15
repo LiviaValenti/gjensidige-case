@@ -8,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+  height: 100%;
+
+    background: linear-gradient(110deg, #123456 20%, #134e8a 40%, #123456 80%);
   }
 `;
 
@@ -40,9 +42,7 @@ const StyledAppRoot = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(110deg, #123456 20%, #134e8a 40%, #123456 80%);
   color: white;
   & > h1 {
     font-size: 2em;
@@ -52,5 +52,16 @@ const StyledAppRoot = styled.div`
     margin: 0 0 35px 0;
     font-size: 1.3em;
     font-weight: 400;
+  }
+  @media only screen and (max-width: 1200px) {
+    & > h1 {
+      font-size: 1.2em;
+      margin: 20px 0 0 0;
+    }
+    & > h2 {
+      margin: 0 0 35px 0;
+      font-size: 1em;
+      font-weight: 400;
+    }
   }
 `;

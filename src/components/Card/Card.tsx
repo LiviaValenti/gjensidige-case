@@ -117,15 +117,15 @@ const StyledCardWrapper = styled.div<CardBodyProps>`
   background-color: #d8d8d8;
   color: #272727;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
-  height: 525px;
-  min-width: 330px;
+  height: 500px;
+  width: 300px;
   border-radius: 25px;
 
   // Shine-effect
   transition: 0.3s;
   &::before {
-    width: 50px;
-    height: 525px;
+    width: 30%;
+    height: 100%;
     content: '';
     position: absolute;
     background: rgba(255, 255, 255, 0.5);
@@ -134,8 +134,8 @@ const StyledCardWrapper = styled.div<CardBodyProps>`
     transition: 0.3s;
   }
   &::after {
-    width: 30px;
-    height: 525px;
+    width: 10%;
+    height: 100%;
     content: '';
     position: absolute;
     background: rgba(255, 255, 255, 0.2);
@@ -155,4 +155,14 @@ const StyledCardWrapper = styled.div<CardBodyProps>`
       transform: translateX(100px) skewX(-20deg);
     }
   }
+  @media only screen and (max-width: 1200px) {
+      width: 250px;
+      height: 400px;
+  }
+  @media only screen and (max-width: 830px) {
+      width: 220px;
+      min-height: 350px;
+      display: ${props => !props.isActiveCard && "none"};
+  }
+  
 `;

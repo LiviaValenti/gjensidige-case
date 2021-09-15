@@ -58,6 +58,18 @@ const StatsWrapper = styled.div`
     align-self: center;
     font-weight: 500;
   }
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: 80px 110px;
+    & p {
+      margin: 5px 5px 0 5px;
+    }
+  }
+  @media only screen and (max-width: 830px) {
+    grid-template-columns: 80px 110px;
+    & p {
+      margin: 0 5px 0 5px;
+    }
+  }
 `;
 
 const StyledMeter = styled(Meter)`

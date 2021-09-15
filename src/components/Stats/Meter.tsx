@@ -25,7 +25,7 @@ export default Meter;
 
 const MeterBody = styled.div`
   height: 10px;
-  width: 110px;
+  width: 100%;
   border-radius: 10px;
   position: relative;
   background: #7e6d57;
@@ -34,7 +34,7 @@ const MeterBody = styled.div`
 `;
 
 const ProgressBody = styled.span`
-  width: 110px;
+  width: 100%;
   position: relative;
   display: block;
   height: 100%;
