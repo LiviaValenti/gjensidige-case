@@ -1,6 +1,6 @@
-# Student case
+# Min løsning av Gjensidige sitt student-case
 
-Min løsning av Gjensidige sitt student-case ☀
+:round_pushpin: Besøk siden på: [gjensidige.liviavalenti.no](http://gjensidige.liviavalenti.no/)
 
 ## Oppgaven
 
