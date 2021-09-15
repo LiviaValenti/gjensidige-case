@@ -6,6 +6,7 @@ import { getGradientForType } from '../../utils';
 import CardHeader from './CardHeader';
 import TypeTag from './TypeTag';
 import { MouseEvent } from 'react';
+import Spinner from './Spinner';
 
 interface CardProps {
   pokemon?: Pokemon;
@@ -61,7 +62,7 @@ const Card = ({
       </StyledCardWrapper>
     );
   }
-  return <p>No pokemon fetched</p>;
+  return <Spinner/>;
 };
 export default Card;
 
@@ -86,6 +87,7 @@ const ClickOverlay = styled.div<{ isChosen: boolean; hoverIcon: string }>`
     background-size: 150px;
     background-repeat: no-repeat;
   }
+  transition: 0.4s;
   filter: opacity(0);
   z-index: 2;
   height: 525px;
@@ -145,7 +147,7 @@ const StyledCardWrapper = styled.div<CardBodyProps>`
   }
   &:hover {
     transform: scale(1.1)
-      rotate3d(1, 2, 2, ${(props) => props.isActiveCard && 20}deg);
+      rotate3d(1, 2, 2, ${(props) => props.isActiveCard && !props.isChosen && 20}deg);
     cursor: pointer;
     ${ClickOverlay} {
       filter: opacity(0.8);
