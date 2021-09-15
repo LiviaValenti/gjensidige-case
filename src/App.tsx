@@ -21,7 +21,7 @@ const App = () => {
     <StyledAppRoot>
       <GlobalStyle />
       <h1>
-        Pokemon! Gotta <i>fetch</i> them all
+        Pokémon! Gotta <i>fetch</i> them all
       </h1>
       <h2>Choose 3 favorites by clicking on the cards</h2>
       <CardDeck
